@@ -1,9 +1,11 @@
 #include <iostream>
+#include "dbconnector.h"
 
-using namespace std;
+//using namespace std;
 
 int main()
 {
-    cout << "Hello World!" << endl;
+    DBConnector dbconnector = DBConnector();
+    dbconnector.getAllCars();
     return 0;
 }
