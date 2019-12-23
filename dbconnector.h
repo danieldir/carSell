@@ -15,9 +15,15 @@ public:
     DBConnector();
     std::list<std::tuple<int, QString, QString, QString, int, QString, int> > getAllCars();
     std::map<int,std::pair<QString, QString> > getAllUsers();
-    std::pair<QString, QString> getUserById(int id);
-    QString getHashByUsername(QString username);
-    bool insertUser(QString username, QString password);
+    std::pair<QString, QString> getUserById(const int id);
+    QString getHashByUsername(const QString username);
+    bool insertUser(const QString username, const QString password);
+    bool insertCar(const QString marke, const QString modell, const QString farbe, const int preis, const QString kraftstoffart, const QString bild, const int verkaeuferid);
+    int getNewId(const QString table);
+    bool deleteUser(const int idUser);
+    bool deleteCar(const int idAuto);
+    std::list<std::tuple<int, QString, QString, QString, int, QString, int> > searchCar
+    (QString marke, QString modell, QString farbe, int preis, QString kraftstoffart, int verkaeuferid);
 };
 
 #endif // DBCONNECTOR_H

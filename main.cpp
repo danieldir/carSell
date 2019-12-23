@@ -8,8 +8,12 @@ int main()
 {
     //tests
     DBConnector dbconnector = DBConnector();
-//    qDebug() << dbconnector.insertUser("testuser3", "password"); //Test: User einfügen
-
+//    dbconnector.searchCar(NULL, NULL, NULL, 0, "Benzin", 0); //Test: Auto suchen (Null bei String/0 bei int wenn Wert egal)
+//    qDebug() << dbconnector.getNewId("Auto");
+//    qDebug() << dbconnector.insertUser("testuser5", "anders"); //Test: User einfügen
+//    qDebug() << dbconnector.deleteUser(5); //Test: User löschen
+//    qDebug() << "Insert Car: " << dbconnector.insertCar("Audi", "A3 Sportback", "Rot", 18980, "Diesel", "Bild", 3); //Test: Auto einfügen
+//    qDebug() << "Delete Car:  << dbconnector.deleteCar(3);
     //Test: Erste Zeile von Car
 //    auto l = dbconnector.getAllCars();
 //    auto t = l.front();
