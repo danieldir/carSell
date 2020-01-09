@@ -15,6 +15,7 @@ public:
     DBConnector();
     std::list<std::tuple<int, QString, QString, QString, int, QString, int> > getAllCars();
     std::map<int,std::pair<QString, QString> > getAllUsers();
+    std::list<std::tuple<int, int, int, int> > getAllSales();
     std::pair<QString, QString> getUserById(const int id);
     QString getHashByUsername(const QString username);
     bool insertUser(const QString username, const QString password);

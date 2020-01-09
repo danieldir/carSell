@@ -20,7 +20,7 @@ std::list<std::tuple<int, QString, QString, QString, int, QString, int> > DBConn
     QString marke, modell, farbe, kraftstoffart;
     QSqlQuery query;
     std::list<std::tuple<int, QString, QString, QString, int, QString, int> > l;
-    query.exec("select * from Auto");
+    query.exec("SELECT * FROM Auto");
     while(query.next()) {
         id = query.value(0).toInt();
         marke = query.value(1).toString();
@@ -40,7 +40,7 @@ std::map<int,std::pair<QString, QString> > DBConnector::getAllUsers(){
     QString username, hash;
     QSqlQuery query;
     std::map<int,std::pair<QString, QString> > m;
-    query.exec("select * from User");
+    query.exec("SELECT * FROM User");
     while(query.next()) {
         id = query.value(0).toInt();
         username = query.value(1).toString();
@@ -49,6 +49,22 @@ std::map<int,std::pair<QString, QString> > DBConnector::getAllUsers(){
         //        m.insert(std::pair<int, QString>((id, username));
     }
     return m;
+}
+
+std::list<std::tuple<int, int, int, int> > DBConnector::getAllSales() {
+    int idVerkauf, autoid, verkaeufer, kaeufer;
+    QSqlQuery query;
+    std::list<std::tuple<int, int, int, int> > l;
+    query.exec("SELECT * FROM Verkauf");
+    while(query.next()) {
+        idVerkauf = query.value(0).toInt();
+        autoid = query.value(1).toInt();
+        verkaeufer = query.value(2).toInt();
+        kaeufer = query.value(3).toInt();
+        qDebug() << idVerkauf << "\t" << autoid << "\t" << verkaeufer << "\t" << kaeufer;
+        l.push_back(std::tuple<int, int, int, int>(idVerkauf, autoid, verkaeufer, kaeufer));
+    }
+    return l;
 }
 
 std::pair<QString, QString> DBConnector::getUserById(const int id) {
