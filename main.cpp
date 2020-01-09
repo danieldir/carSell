@@ -1,28 +1,11 @@
-#include <iostream>
-#include "dbconnector.h"
+#include "MyWindow2.h"
+#include <QApplication>
 
-
-//using namespace std;
-
-int main()
+int main(int argc, char *argv[])
 {
-    //tests
-    DBConnector dbconnector = DBConnector();
-//    auto l = dbconnector.getAllMarken();
-//    auto l2 = dbconnector.getAllModelle();
-//    auto l3 = dbconnector.getAllFarben();
-//    dbconnector.searchCar(NULL, NULL, NULL, 0, "Benzin", 0); //Test: Auto suchen (Null bei String/0 bei int wenn Wert egal)
-//    qDebug() << dbconnector.getNewId("Auto");
-//    qDebug() << dbconnector.insertUser("testuser5", "anders"); //Test: User einfügen
-//    qDebug() << dbconnector.deleteUser(5); //Test: User löschen
-//    qDebug() << "Insert Car: " << dbconnector.insertCar("Audi", "A3 Sportback", "Rot", 18980, "Diesel", "Bild", 3); //Test: Auto einfügen
-//    qDebug() << "Delete Car:  << dbconnector.deleteCar(3);
-    //Test: Erste Zeile von Car
-//    auto l = dbconnector.getAllCars();
-//    auto t = l.front();
-//    qDebug() << std::get<1>(t) << "\t" << std::get<2>(t);
+    QApplication a(argc, argv);
+    MyWindow2 w;
+    w.show();
 
-//    auto p = dbconnector.getUserById(2); //Test: Userid 2 ausgeben
-
-    return 0;
+    return a.exec();
 }
