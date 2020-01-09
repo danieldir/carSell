@@ -4,30 +4,48 @@
 #include "dialog31.h"
 #include <QtWidgets>
 #include <QPixmap>
+#include "dbconnector.h"
 
 Dialog::Dialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Dialog)
 {
+
+    DBConnector dbconnector = DBConnector();
     ui->setupUi(this);
+auto liste = dbconnector.getAllMarken();
+QString item;
+while(!liste.empty()) {
+    item = liste.front();
+    liste.pop_front();
+    ui->comboMark->addItem(item);
+}
 
-ui->comboMark->addItem(" Audi");
-ui->comboMark->addItem(" Mercedes ");
-ui->comboMark->addItem(" Volkswagen");
-ui->comboMark->addItem(" Toyota");
-
-ui->comboModel->addItem(" Q5");
-ui->comboModel->addItem(" Corolla");
-ui->comboModel->addItem(" A205");
-ui->comboModel->addItem(" Limousine");
+liste = dbconnector.getAllModelle();
+while(!liste.empty()) {
+    item = liste.front();
+    liste.pop_front();
+    ui->comboModel->addItem(item);
+}
+//ui->comboModel->addItem(" Q5");
+//ui->comboModel->addItem(" Corolla");
+//ui->comboModel->addItem(" A205");
+//ui->comboModel->addItem(" Limousine");
 ui->comboBox->addItem(" Gebraucht");
 ui->comboBox->addItem(" Neu");
 
-ui->comboColor->addItem(" blau");
-ui->comboColor->addItem(" rot");
-ui->comboColor->addItem(" Gruen");
-ui->comboColor->addItem(" Gelb");
-ui->comboColor->addItem(" Weiss");
+
+liste = dbconnector.getAllFarben();
+while(!liste.empty()) {
+    item = liste.front();
+    liste.pop_front();
+    ui->comboColor->addItem(item);
+}
+//ui->comboColor->addItem(" blau");
+//ui->comboColor->addItem(" rot");
+//ui->comboColor->addItem(" Gruen");
+//ui->comboColor->addItem(" Gelb");
+//ui->comboColor->addItem(" Weiss");
 
 for ( int i=1000; i<20000; i++)
 {
@@ -98,6 +116,7 @@ void Dialog::on_Suche_clicked()
 
 void Dialog::on_erstellen_clicked()
 {
+    vPreis= ui->Preis->text();
     QMessageBox::information(this, "Auto Verkaufen", "Suchkriterien wurde bestätigen");
     hide();
     Dialog31 dialog31;

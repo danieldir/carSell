@@ -1,7 +1,6 @@
 #include "MyWindow2.h"
 #include <QApplication>
 #include <iostream>
-#include "dbconnector.h"
 
 int main(int argc, char *argv[])
 {
@@ -10,7 +9,6 @@ int main(int argc, char *argv[])
     w.show();
 
     //tests
-       DBConnector dbconnector = DBConnector();
 //       auto l = dbconnector.getAllMarken();
 //       auto l2 = dbconnector.getAllModelle();
 //       auto l3 = dbconnector.getAllFarben();
