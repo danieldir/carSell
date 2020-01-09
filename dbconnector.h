@@ -21,6 +21,7 @@ public:
     std::list<std::tuple<int, int, int, int> > getAllSales();
     std::pair<QString, QString> getUserById(const int id);
     QString getHashByUsername(const QString username);
+    //std::tuple<int, int, int ,int> getVerkaufById(const int id);
     bool insertUser(const QString username, const QString password);
     bool insertCar(const QString marke, const QString modell, const QString farbe, const int preis, const QString kraftstoffart, const QString bild, const int verkaeuferid);
     int getNewId(const QString table);
