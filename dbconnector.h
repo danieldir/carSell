@@ -14,6 +14,9 @@ class DBConnector
 public:
     DBConnector();
     std::list<std::tuple<int, QString, QString, QString, int, QString, int> > getAllCars();
+    std::list<QString> getAllMarken();
+    std::list<QString> getAllModelle();
+    std::list<QString> getAllFarben();
     std::map<int,std::pair<QString, QString> > getAllUsers();
     std::list<std::tuple<int, int, int, int> > getAllSales();
     std::pair<QString, QString> getUserById(const int id);

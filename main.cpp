@@ -8,6 +8,9 @@ int main()
 {
     //tests
     DBConnector dbconnector = DBConnector();
+    auto l = dbconnector.getAllMarken();
+    auto l2 = dbconnector.getAllModelle();
+    auto l3 = dbconnector.getAllFarben();
 //    dbconnector.searchCar(NULL, NULL, NULL, 0, "Benzin", 0); //Test: Auto suchen (Null bei String/0 bei int wenn Wert egal)
 //    qDebug() << dbconnector.getNewId("Auto");
 //    qDebug() << dbconnector.insertUser("testuser5", "anders"); //Test: User einfügen

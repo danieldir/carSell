@@ -35,6 +35,48 @@ std::list<std::tuple<int, QString, QString, QString, int, QString, int> > DBConn
     return l;
 }
 
+std::list<QString> DBConnector::getAllMarken() {
+    QString marke;
+    QSqlQuery query;
+    std::list<QString> l;
+    query.exec("SELECT DISTINCT Marke FROM Auto");
+    while(query.next()) {
+        marke = query.value(0).toString();
+        qDebug() << marke;
+        l.push_back(marke);
+    }
+    l.sort();
+    return l;
+}
+
+std::list<QString> DBConnector::getAllModelle() {
+    QString modell;
+    QSqlQuery query;
+    std::list<QString> l;
+    query.exec("SELECT DISTINCT Modell FROM Auto");
+    while(query.next()) {
+        modell = query.value(0).toString();
+        qDebug() << modell;
+        l.push_back(modell);
+    }
+    l.sort();
+    return l;
+}
+
+std::list<QString> DBConnector::getAllFarben() {
+    QString farbe;
+    QSqlQuery query;
+    std::list<QString> l;
+    query.exec("SELECT DISTINCT Farbe FROM Auto");
+    while(query.next()) {
+        farbe = query.value(0).toString();
+        qDebug() << farbe;
+        l.push_back(farbe);
+    }
+    l.sort();
+    return l;
+}
+
 std::map<int,std::pair<QString, QString> > DBConnector::getAllUsers(){
     int id;
     QString username, hash;
