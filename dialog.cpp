@@ -4,89 +4,71 @@
 #include "dialog31.h"
 #include <QtWidgets>
 #include <QPixmap>
-#include "dbconnector.h"
 
-Dialog::Dialog(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::Dialog)
+Dialog::Dialog(QWidget *parent) : QDialog(parent), ui(new Ui::Dialog)
 {
 
     DBConnector dbconnector = DBConnector();
     ui->setupUi(this);
-auto liste = dbconnector.getAllMarken();
-QString item;
-while(!liste.empty()) {
-    item = liste.front();
-    liste.pop_front();
-    ui->comboMark->addItem(item);
-}
 
-liste = dbconnector.getAllModelle();
-while(!liste.empty()) {
-    item = liste.front();
-    liste.pop_front();
-    ui->comboModel->addItem(item);
-}
-//ui->comboModel->addItem(" Q5");
-//ui->comboModel->addItem(" Corolla");
-//ui->comboModel->addItem(" A205");
-//ui->comboModel->addItem(" Limousine");
-ui->comboBox->addItem(" Gebraucht");
-ui->comboBox->addItem(" Neu");
+//    ui->erstellen->connect(this, SIGNAL(clicked()), dbconnector, SLOT(on_erstellen_clicked()));
+
+//    connect(ui->erstellen, SIGNAL(clicked()), this, SLOT(on_erstellen_clicked(dbconnector)));
 
 
-liste = dbconnector.getAllFarben();
-while(!liste.empty()) {
-    item = liste.front();
-    liste.pop_front();
-    ui->comboColor->addItem(item);
-}
-//ui->comboColor->addItem(" blau");
-//ui->comboColor->addItem(" rot");
-//ui->comboColor->addItem(" Gruen");
-//ui->comboColor->addItem(" Gelb");
-//ui->comboColor->addItem(" Weiss");
 
-for ( int i=1000; i<20000; i++)
-{
-   i= i+ 500;
- ui->comboPreis->addItem(QString::number(i)); 
-}
+    auto liste = dbconnector.getAllMarken();
+    QString item;
+    while(!liste.empty()) {
+        item = liste.front();
+        liste.pop_front();
+        ui->comboMark->addItem(item);
+    }
 
-//QColor couleur = QColorDialog::getColor(Qt::white, this);
+    liste = dbconnector.getAllModelle();
+    while(!liste.empty()) {
+        item = liste.front();
+        liste.pop_front();
+        ui->comboModel->addItem(item);
+    }
 
-  // QPalette palette;
-  // palette.setColor(QPalette::ButtonText, couleur);
-   //ui->comboColor->setPalette(palette);
+    liste = dbconnector.getAllFarben();
+    while(!liste.empty()) {
+        item = liste.front();
+        liste.pop_front();
+        ui->comboColor->addItem(item);
+    }
 
-ui->comboMark_2->addItem(" Audi");
-ui->comboMark_2->addItem(" Mercedes ");
-ui->comboMark_2->addItem(" Volkswagen");
-ui->comboMark_2->addItem(" Toyota");
+    for ( int i=1000; i<20000; i++)
+    {
+        i= i+ 500;
+        ui->comboPreis->addItem(QString::number(i));
+    }
 
-ui->comboModel_2->addItem(" Q5");
-ui->comboModel_2->addItem(" Corolla");
-ui->comboModel_2->addItem(" A205");
-ui->comboModel_2->addItem(" Limousine");
-ui->comboBox_2->addItem(" Gebraucht");
-ui->comboBox_2->addItem(" Neu");
+    ui->linePreis->setValidator(new QIntValidator(0, 1000000, this));
 
-//ui-> ->addItem(" blau");
-//ui->comboColor_2->addItem(" rot");
-//ui->comboColor_2->addItem(" Gruen");
-//ui->comboColor_2->addItem(" Gelb");
-ui->comboKraft->addItem(" Benzin");
-ui->comboKraft->addItem(" Diesel");
-ui->comboKraft->addItem(" Elektroauto");
+    //QColor couleur = QColorDialog::getColor(Qt::white, this);
 
-for ( int i=1000; i<20000; i++)
-{
-   i= i+ 500;
- //ui->comboPreis_2->addItem(QString::number(i));
-}
+    // QPalette palette;
+    // palette.setColor(QPalette::ButtonText, couleur);
+    //ui->comboColor->setPalette(palette);
 
-QPixmap pix("home/Persönlicher_Ordner/bild.jpg");
-ui->label_pic->setPixmap(pix.scaled(100,100, Qt::KeepAspectRatio));
+    //ui-> ->addItem(" blau");
+    //ui->comboColor_2->addItem(" rot");
+    //ui->comboColor_2->addItem(" Gruen");
+    //ui->comboColor_2->addItem(" Gelb");
+    ui->comboKraft->addItem(" Benzin");
+    ui->comboKraft->addItem(" Diesel");
+    ui->comboKraft->addItem(" Elektroauto");
+
+    for ( int i=1000; i<20000; i++)
+    {
+        i= i+ 500;
+        //ui->comboPreis_2->addItem(QString::number(i));
+    }
+
+    QPixmap pix("home/Persönlicher_Ordner/bild.jpg");
+    ui->label_pic->setPixmap(pix.scaled(100,100, Qt::KeepAspectRatio));
 
 
 }
@@ -109,18 +91,27 @@ void Dialog::on_Suche_clicked()
     hide();
     Dialog2 dialog2;
 
-   dialog2.setModal(true); // form.setWindowModality(true);  //setModal(true);
+    dialog2.setModal(true); // form.setWindowModality(true);  //setModal(true);
     dialog2.exec();
 
 }
 
-void Dialog::on_erstellen_clicked()
+void Dialog::on_erstellen_clicked(DBConnector dbconnector)
 {
-    vPreis= ui->Preis->text();
-    QMessageBox::information(this, "Auto Verkaufen", "Suchkriterien wurde bestätigen");
+    int vPreis;
+    QString vMarke, vModell, vFarbe, vKraftstoff;
+    vPreis = ui->linePreis->text().toInt();
+    vMarke = ui->lineMarke->text();
+    vModell = ui->lineModell->text();
+    vFarbe = ui->lineFarbe->text();
+    vKraftstoff = ui->comboKraft->currentText();
+    qDebug() << vMarke << "\t" << vModell << "\t" << vFarbe << "\t" << vPreis << "\t" << vKraftstoff;
+    dbconnector.insertCar(vMarke, vModell, vFarbe, vPreis, vKraftstoff, NULL, 0/*, UserID*/);
+
+    QMessageBox::information(this, "Auto Verkaufen", "Ihr Auto wird hinzugefügt.");
     hide();
     Dialog31 dialog31;
 
-   dialog31.setModal(true);
+    dialog31.setModal(true);
     dialog31.exec();
 }

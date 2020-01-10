@@ -2,6 +2,7 @@
 #define DIALOG_H
 
 #include <QDialog>
+#include "dbconnector.h"
 
 namespace Ui {
 class Dialog;
@@ -20,7 +21,7 @@ private slots:
 
     void on_Suche_clicked();
 
-    void on_erstellen_clicked();
+    void on_erstellen_clicked(DBConnector dbconnector);
 
 private:
     Ui::Dialog *ui;

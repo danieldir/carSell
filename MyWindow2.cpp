@@ -24,7 +24,7 @@ void MyWindow2::on_pushButton_clicked()
     if(username== "foka" && Passwort== "foka")
     {
        // QMessageBox::information(this, "Login", "Username and Paswort is correct");
-        QMessageBox::information(this, "Anmeldung Sucessful", "Willkommen to CarSell "  + username+ " !!" );
+        QMessageBox::information(this, "Anmeldung erfolgreich", "Willkommen bei CarSell " + username);
         hide();
         dialog = new Dialog(this);
         dialog->show();
