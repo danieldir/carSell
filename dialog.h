@@ -21,7 +21,7 @@ private slots:
 
     void on_Suche_clicked();
 
-    void on_erstellen_clicked(DBConnector dbconnector);
+    void on_erstellen_clicked();
 
 private:
     Ui::Dialog *ui;

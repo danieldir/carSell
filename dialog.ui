@@ -43,75 +43,64 @@
      <string>Kaufen</string>
     </attribute>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="1" column="2">
-      <widget class="QComboBox" name="comboPreis"/>
-     </item>
-     <item row="2" column="1">
-      <widget class="QLineEdit" name="Farbe">
-       <property name="text">
-        <string>      Farbe</string>
-       </property>
-       <property name="readOnly">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
      <item row="0" column="0">
-      <widget class="QLineEdit" name="Modell">
+      <widget class="QLabel" name="label_7">
        <property name="text">
-        <string>    Modell</string>
-       </property>
-       <property name="readOnly">
-        <bool>true</bool>
+        <string>Marke</string>
        </property>
       </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QLineEdit" name="Mark">
-       <property name="text">
-        <string>   Marke</string>
-       </property>
-       <property name="readOnly">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QComboBox" name="comboModel"/>
      </item>
      <item row="3" column="1">
       <widget class="QComboBox" name="comboColor"/>
      </item>
      <item row="3" column="0">
-      <widget class="QComboBox" name="comboBox"/>
+      <widget class="QComboBox" name="comboKraft_2"/>
      </item>
-     <item row="4" column="2">
-      <widget class="QPushButton" name="Suche">
+     <item row="2" column="1">
+      <widget class="QLabel" name="label_11">
        <property name="text">
-        <string>Suche</string>
+        <string>Farbe</string>
        </property>
       </widget>
      </item>
      <item row="0" column="2">
-      <widget class="QLineEdit" name="Preis">
+      <widget class="QLabel" name="label_9">
        <property name="text">
         <string>Preis bis</string>
        </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QComboBox" name="comboMark"/>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLabel" name="label_8">
+       <property name="text">
+        <string>Modell</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_10">
+       <property name="text">
+        <string>Kraftstoff</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QLineEdit" name="lineSPreis">
        <property name="readOnly">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QComboBox" name="comboMark"/>
+      <widget class="QComboBox" name="comboModel"/>
      </item>
-     <item row="2" column="0">
-      <widget class="QLineEdit" name="Kraftstoff_2">
+     <item row="3" column="2" rowspan="2">
+      <widget class="QPushButton" name="Suche">
        <property name="text">
-        <string>    Kraftstoff</string>
-       </property>
-       <property name="readOnly">
-        <bool>true</bool>
+        <string>Suche</string>
        </property>
       </widget>
      </item>
@@ -157,53 +146,6 @@
            </property>
           </widget>
          </item>
-         <item row="0" column="0" colspan="2">
-          <widget class="QLineEdit" name="lineEdit">
-           <property name="text">
-            <string>     Marke</string>
-           </property>
-           <property name="readOnly">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="2">
-          <widget class="QLineEdit" name="lineEdit_2">
-           <property name="text">
-            <string>    Modell</string>
-           </property>
-           <property name="readOnly">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="3">
-          <widget class="QLineEdit" name="lineEdit_6">
-           <property name="text">
-            <string>   Farbe</string>
-           </property>
-           <property name="readOnly">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0" colspan="2">
-          <widget class="QLineEdit" name="lineEdit_3">
-           <property name="text">
-            <string>   Preis</string>
-           </property>
-           <property name="readOnly">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="3">
-          <widget class="QPushButton" name="erstellen">
-           <property name="text">
-            <string>Inserat erstellen</string>
-           </property>
-          </widget>
-         </item>
          <item row="1" column="3">
           <widget class="QLineEdit" name="lineFarbe">
            <property name="readOnly">
@@ -218,23 +160,55 @@
            </property>
           </widget>
          </item>
-         <item row="2" column="2">
-          <widget class="QLineEdit" name="Kraftstoff">
-           <property name="text">
-            <string>Kraftstoff</string>
-           </property>
-           <property name="readOnly">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
          <item row="3" column="2">
           <widget class="QComboBox" name="comboKraft"/>
          </item>
          <item row="3" column="0" colspan="2">
-          <widget class="QLineEdit" name="linePreis">
+          <widget class="QLineEdit" name="lineVPreis">
            <property name="readOnly">
             <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QLabel" name="label_3">
+           <property name="text">
+            <string>Modell</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="3">
+          <widget class="QLabel" name="label_4">
+           <property name="text">
+            <string>Farbe</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_5">
+           <property name="text">
+            <string>Preis</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="QLabel" name="label_6">
+           <property name="text">
+            <string>Kraftstoff</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="3" rowspan="2">
+          <widget class="QPushButton" name="erstellen">
+           <property name="text">
+            <string>Inserat erstellen</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0" colspan="2">
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>Marke</string>
            </property>
           </widget>
          </item>

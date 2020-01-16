@@ -1,5 +1,5 @@
 #include "dbconnector.h"
-DBConnector::DBConnector()
+void DBConnector::connectToDB()
 {
     QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
     db.setHostName("remotemysql.com");
